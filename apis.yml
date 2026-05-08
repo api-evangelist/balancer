@@ -1,9 +1,7 @@
 aid: balancer
 url: https://raw.githubusercontent.com/api-evangelist/balancer/refs/heads/main/apis.yml
 name: Balancer
-x-type: company
-description: >-
-  Balancer is a DeFi AMM and automated portfolio manager supporting weighted, stable, and boosted pools with composable liquidity.
+x-type: protocol
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - Web3
@@ -11,13 +9,122 @@ tags:
   - DEX
   - AMM
   - Liquidity
+  - Multi-chain
+  - GraphQL
+  - Smart Order Router
+  - Open Source
 created: '2026-05-08'
 modified: '2026-05-08'
 specificationVersion: '0.19'
-apis: []
+description: >-
+  Balancer is a DeFi AMM and programmable liquidity platform supporting weighted, stable, and
+  custom pools (v2 and v3). Balancer publishes a public GraphQL API at api-v3.balancer.fi for
+  pool, swap, and analytics data, plus per-chain subgraph endpoints. Smart-contract entry
+  points (Vault and Router) are the primary write surface; SDKs wrap the SOR (Smart Order
+  Router) for client-side route construction.
+apis:
+  - aid: balancer:graphql-api
+    name: Balancer GraphQL API
+    tags:
+      - GraphQL
+      - Pools
+      - Swaps
+      - Liquidity
+      - Analytics
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    baseURL: https://api-v3.balancer.fi/
+    humanURL: https://docs.balancer.fi/data-and-analytics/data-and-analytics/api.html
+    description: >-
+      Public GraphQL API used by the Balancer UI and integrators. Provides pools, tokens, swaps,
+      gauges, voting, and analytics across all supported chains.
+    properties:
+      - type: Documentation
+        url: https://docs.balancer.fi/data-and-analytics/data-and-analytics/api.html
+      - type: GitHub
+        url: https://github.com/balancer/api
+    x-features:
+      - GraphQL across all chains in one endpoint
+      - Pool, swap, and gauge schema
+      - Powers the Balancer UI
+    x-use-cases:
+      - Indexing Balancer liquidity for analytics
+      - Building Balancer dashboards
+      - Sourcing pool APRs
+  - aid: balancer:subgraph
+    name: Balancer Subgraph
+    tags:
+      - Subgraph
+      - The Graph
+      - Indexer
+      - GraphQL
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    baseURL: https://api.thegraph.com/subgraphs/name/balancer-labs
+    humanURL: https://docs.balancer.fi/data-and-analytics/data-and-analytics/subgraph.html
+    description: Per-chain GraphQL subgraphs published on The Graph for raw indexed Balancer events.
+    properties:
+      - type: Documentation
+        url: https://docs.balancer.fi/data-and-analytics/data-and-analytics/subgraph.html
+    x-features:
+      - Per-chain GraphQL subgraph
+      - Raw event-level indexing
+    x-use-cases:
+      - Custom analytics
+      - Reconciling on-chain to off-chain data
+  - aid: balancer:sor-sdk
+    name: Balancer SOR SDK
+    tags:
+      - SDK
+      - Smart Order Router
+      - Solidity
+      - JavaScript
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    baseURL: https://github.com/balancer/b-sdk
+    humanURL: https://docs.balancer.fi/integration-guides/swapping/swaps-with-sor-sdk.html
+    description: Client-side TypeScript / Solidity SDK for the Balancer Smart Order Router; constructs swap routes against current pool state.
+    properties:
+      - type: Documentation
+        url: https://docs.balancer.fi/integration-guides/swapping/swaps-with-sor-sdk.html
+      - type: GitHub
+        url: https://github.com/balancer/b-sdk
+    x-features:
+      - Client-side SOR
+      - Multihop swap routing
+      - Built-in gas estimation
+    x-use-cases:
+      - Aggregator integrations
+      - Custom swap UIs
+  - aid: balancer:smart-contracts
+    name: Balancer Smart Contracts
+    tags:
+      - Smart Contracts
+      - On-chain
+      - Vault
+      - Router
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    baseURL: https://etherscan.io/address/balancer.fi
+    humanURL: https://docs.balancer.fi/concepts/vault/
+    description: Vault and Router smart contracts where swaps and liquidity actions are executed on-chain. v2 and v3 versions deployed across Ethereum, Arbitrum, Optimism, Polygon, Avalanche, Gnosis, etc.
+    properties:
+      - type: Documentation
+        url: https://docs.balancer.fi/concepts/vault/
+      - type: GitHub
+        url: https://github.com/balancer/balancer-v2-monorepo
+    x-features:
+      - Vault architecture
+      - Weighted, Stable, Composable Stable, Custom pools
+      - veBAL governance
+    x-use-cases:
+      - Direct pool execution
+      - Liquidity provisioning
 common:
-  - type: Website
+  - type: Portal
     url: https://balancer.fi/
+  - type: Documentation
+    url: https://docs.balancer.fi/
+  - type: GitHub
+    url: https://github.com/balancer
+  - type: Forum
+    url: https://forum.balancer.fi/
   - type: Plans
     url: plans/balancer-plans-pricing.yml
   - type: RateLimits
