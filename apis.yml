@@ -1,0 +1,29 @@
+aid: balancer
+url: https://raw.githubusercontent.com/api-evangelist/balancer/refs/heads/main/apis.yml
+name: Balancer
+x-type: company
+description: >-
+  Balancer is a DeFi AMM and automated portfolio manager supporting weighted, stable, and boosted pools with composable liquidity.
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Web3
+  - DeFi
+  - DEX
+  - AMM
+  - Liquidity
+created: '2026-05-08'
+modified: '2026-05-08'
+specificationVersion: '0.19'
+apis: []
+common:
+  - type: Website
+    url: https://balancer.fi/
+  - type: Plans
+    url: plans/balancer-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/balancer-rate-limits.yml
+  - type: FinOps
+    url: finops/balancer-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
