@@ -117,6 +117,8 @@ apis:
       - Direct pool execution
       - Liquidity provisioning
 common:
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/balancer-labs
   - type: Portal
     url: https://balancer.fi/
   - type: Documentation
