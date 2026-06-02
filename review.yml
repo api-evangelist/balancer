@@ -1,0 +1,138 @@
+aid: balancer
+name: Balancer
+review_type: websocket-availability
+question: Does Balancer expose a documented, first-party public WebSocket or streaming API?
+answer: No
+summary: |
+  Balancer is an on-chain decentralized exchange (AMM) and programmable
+  liquidity protocol. Balancer Labs does not publish or host a first-party
+  public WebSocket, Server-Sent Events, or webhook API. The documented
+  developer surface consists of (1) a public GraphQL API at
+  api-v3.balancer.fi served over HTTPS, (2) per-chain GraphQL subgraphs
+  hosted on The Graph (third-party infrastructure), (3) the Smart Order
+  Router SDK that runs client-side, and (4) the underlying Vault/Router
+  smart contracts, which are accessed via Ethereum/EVM JSON-RPC. Real-time
+  access is not provided by Balancer itself — it is a property of the
+  JSON-RPC node provider (eth_subscribe over WebSocket) or, in some cases,
+  of a third-party subgraph host. Neither of those is a Balancer-operated
+  streaming endpoint.
+investigated_on: '2026-05-30'
+investigated_by: API Evangelist
+findings:
+  - name: Balancer GraphQL API is HTTPS POST, not WebSocket
+    detail: |
+      The Balancer GraphQL API at https://api-v3.balancer.fi/ is the public
+      data API used by the Balancer UI and integrators. The documented
+      access pattern is GraphQL queries over HTTPS POST. The docs do not
+      describe a `wss://` endpoint, GraphQL subscriptions, or any
+      server-push channel. There is no documented streaming surface on the
+      first-party Balancer API.
+    sources:
+      - https://docs.balancer.fi/data-and-analytics/data-and-analytics/api.html
+      - https://api-v3.balancer.fi/
+      - https://github.com/balancer/api
+  - name: Balancer Subgraph access is GraphQL over HTTPS via The Graph
+    detail: |
+      Balancer documents per-chain subgraph access through The Graph
+      (api.thegraph.com / The Graph Network gateway). This is third-party
+      indexing infrastructure, not a Balancer-hosted endpoint. GraphQL
+      subscriptions over WebSocket are not documented by Balancer as a
+      supported access pattern; the documented usage is HTTPS POST queries
+      against each chain's subgraph.
+    sources:
+      - https://docs.balancer.fi/data-and-analytics/data-and-analytics/subgraph.html
+  - name: Real-time on-chain data is via JSON-RPC, not a Balancer WS endpoint
+    detail: |
+      Balancer is on-chain. Real-time Vault and pool events (Swap,
+      PoolBalanceChanged, FlashLoan, etc.) are surfaced by Ethereum/L2
+      nodes via the standard JSON-RPC eth_subscribe method over a
+      WebSocket connection. That WebSocket connection is provided by the
+      node operator the developer chooses (self-hosted geth/reth/nethermind,
+      Alchemy, Infura, QuickNode, Ankr, etc.) — not by Balancer. Balancer
+      does not operate a public node WS endpoint for third-party
+      developers.
+    sources:
+      - https://docs.balancer.fi/concepts/vault/
+      - https://docs.balancer.fi/llms.txt
+  - name: Balancer SOR SDK is client-side, not a streaming server
+    detail: |
+      The Balancer SOR SDK (b-sdk) constructs swap routes client-side
+      against pool state fetched from the GraphQL API and/or on-chain
+      reads. It is not a hosted streaming service and does not push data
+      to clients. There is no documented WS endpoint associated with the
+      SDK.
+    sources:
+      - https://docs.balancer.fi/integration-guides/swapping/swaps-with-sor-sdk.html
+      - https://github.com/balancer/b-sdk
+  - name: No documented webhooks
+    detail: |
+      Balancer documentation does not describe any first-party webhook
+      delivery mechanism for pool, swap, gauge, or governance events.
+      Event notification is left to clients polling the GraphQL API or
+      subscribing to on-chain logs through their own JSON-RPC provider.
+    sources:
+      - https://docs.balancer.fi/
+      - https://docs.balancer.fi/llms.txt
+documented_apis:
+  - name: Balancer GraphQL API
+    protocol: GraphQL over HTTPS
+    websocket: false
+    notes: |
+      First-party API at api-v3.balancer.fi. HTTPS POST only. No documented
+      WebSocket, SSE, or GraphQL subscription channel.
+  - name: Balancer Subgraph
+    protocol: GraphQL over HTTPS (via The Graph)
+    websocket: false
+    notes: |
+      Third-party infrastructure (The Graph). Balancer does not operate
+      this endpoint. WebSocket GraphQL subscriptions are not part of the
+      documented access pattern.
+  - name: Balancer SOR SDK (b-sdk)
+    protocol: Client-side library (TypeScript)
+    websocket: false
+    notes: |
+      Client-side route construction. Not a hosted service; not a
+      streaming surface.
+  - name: Balancer smart contracts (Vault, Router)
+    protocol: EVM JSON-RPC
+    websocket: indirect
+    notes: |
+      Real-time on-chain events are obtained via eth_subscribe on a
+      JSON-RPC node provider's WebSocket endpoint. That WebSocket belongs
+      to the node provider, not to Balancer.
+recommendations_for_realtime:
+  - Use a JSON-RPC node provider (Alchemy, Infura, QuickNode, Ankr,
+    self-hosted) and call eth_subscribe over its WebSocket endpoint to
+    receive Balancer Vault/pool contract logs in real time.
+  - For indexed/historical real-time data, evaluate The Graph subgraph
+    hosting options. Note this is third-party infrastructure, not
+    Balancer.
+  - Poll the public GraphQL API at api-v3.balancer.fi for near-real-time
+    pool, swap, and gauge data. Respect any documented rate limits.
+  - Do not represent a Balancer real-time WebSocket as a first-party
+    Balancer API. No such endpoint is documented by Balancer Labs.
+asyncapi_recommendation:
+  produce: false
+  reason: |
+    There is no first-party Balancer-hosted WebSocket, SSE, or
+    message-broker endpoint to describe. An AsyncAPI specification would
+    have to fabricate channels, servers, and message schemas that
+    Balancer does not publish. Generating one would misrepresent the
+    actual API surface.
+sources_checked:
+  - url: https://docs.balancer.fi/
+    note: Documentation portal landing page. References concepts, integration guides, data and analytics. No WebSocket or streaming endpoint documented.
+  - url: https://docs.balancer.fi/llms.txt
+    note: LLM-oriented index of the docs. References GraphQL API, subgraphs, SDKs, and smart contracts. No WS/SSE/subscription endpoints listed.
+  - url: https://docs.balancer.fi/data-and-analytics/data-and-analytics/api.html
+    note: Documents the api-v3.balancer.fi GraphQL endpoint. HTTPS POST only.
+  - url: https://docs.balancer.fi/data-and-analytics/data-and-analytics/subgraph.html
+    note: Documents per-chain subgraph endpoints on The Graph. Third-party hosted; HTTPS POST.
+  - url: https://docs.balancer.fi/concepts/vault/
+    note: Vault architecture reference. On-chain only; access via JSON-RPC node providers.
+  - url: https://docs.balancer.fi/integration-guides/swapping/swaps-with-sor-sdk.html
+    note: SOR SDK is a client-side library. Not a hosted streaming service.
+  - url: https://github.com/balancer/api
+    note: Source for the api-v3.balancer.fi GraphQL service. No WS server documented.
+  - url: https://github.com/balancer/b-sdk
+    note: Client-side SDK. No WS client / no WS server.
