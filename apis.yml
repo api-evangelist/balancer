@@ -2,7 +2,7 @@ aid: balancer
 url: https://raw.githubusercontent.com/api-evangelist/balancer/refs/heads/main/apis.yml
 name: Balancer
 kind: protocol
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
 - Web3
 - DeFi
@@ -31,7 +31,7 @@ apis:
   - Swaps
   - Liquidity
   - Analytics
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api-v3.balancer.fi/
   humanURL: https://docs.balancer.fi/data-and-analytics/data-and-analytics/api.html
   description: >-
@@ -59,7 +59,7 @@ apis:
   - The Graph
   - Indexer
   - GraphQL
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.thegraph.com/subgraphs/name/balancer-labs
   humanURL: https://docs.balancer.fi/data-and-analytics/data-and-analytics/subgraph.html
   description: Per-chain GraphQL subgraphs published on The Graph for raw indexed Balancer events.
@@ -79,7 +79,7 @@ apis:
   - Smart Order Router
   - Solidity
   - JavaScript
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://github.com/balancer/b-sdk
   humanURL: https://docs.balancer.fi/integration-guides/swapping/swaps-with-sor-sdk.html
   description: Client-side TypeScript / Solidity SDK for the Balancer Smart Order Router; constructs swap routes against current pool state.
@@ -102,7 +102,7 @@ apis:
   - On-chain
   - Vault
   - Router
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://etherscan.io/address/balancer.fi
   humanURL: https://docs.balancer.fi/concepts/vault/
   description: Vault and Router smart contracts where swaps and liquidity actions are executed on-chain. v2 and v3 versions deployed across Ethereum, Arbitrum, Optimism, Polygon, Avalanche, Gnosis, etc.
