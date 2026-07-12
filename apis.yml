@@ -119,6 +119,8 @@ apis:
   - Direct pool execution
   - Liquidity provisioning
 common:
+- type: DomainSecurity
+  url: security/balancer-domain-security.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/balancer-labs
 - type: Portal
@@ -137,6 +139,8 @@ common:
   url: finops/balancer-finops.yml
 - type: LlmsText
   url: https://docs.balancer.fi/llms.txt
+- url: https://medium.com/feed/balancer-protocol
+  type: Blog
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
