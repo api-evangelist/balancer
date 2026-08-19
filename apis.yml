@@ -27,7 +27,7 @@ tags:
 - Open Source
 created: '2026-05-08'
 modified: '2026-05-08'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 description: >-
   Balancer is a DeFi AMM and programmable liquidity platform supporting weighted, stable, and
   custom pools (v2 and v3). Balancer publishes a public GraphQL API at api-v3.balancer.fi for
