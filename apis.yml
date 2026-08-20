@@ -21,6 +21,16 @@ tags:
 - DEX
 - AMM
 - Liquidity
+- Multi-Chain
+- GraphQL
+- Smart Order Router
+- Open-Source
+tags_raw:
+- Web3
+- DeFi
+- DEX
+- AMM
+- Liquidity
 - Multi-chain
 - GraphQL
 - Smart Order Router
@@ -110,6 +120,11 @@ apis:
 - aid: balancer:smart-contracts
   name: Balancer Smart Contracts
   tags:
+  - Smart Contracts
+  - Onchain
+  - Vault
+  - Router
+  tags_raw:
   - Smart Contracts
   - On-chain
   - Vault
