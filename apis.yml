@@ -47,14 +47,12 @@ tags_raw:
 - Smart Order Router
 - Open Source
 created: '2026-05-08'
-modified: '2026-05-08'
+modified: '2026-09-16'
 specificationVersion: '0.23'
-description: >-
-  Balancer is a DeFi AMM and programmable liquidity platform supporting weighted, stable, and
-  custom pools (v2 and v3). Balancer publishes a public GraphQL API at api-v3.balancer.fi for
-  pool, swap, and analytics data, plus per-chain subgraph endpoints. Smart-contract entry
-  points (Vault and Router) are the primary write surface; SDKs wrap the SOR (Smart Order
-  Router) for client-side route construction.
+description: Balancer is a DeFi AMM and programmable liquidity platform supporting weighted, stable, and
+  custom pools (v2 and v3). Balancer publishes a public GraphQL API at api-v3.balancer.fi for pool, swap,
+  and analytics data, plus per-chain subgraph endpoints. Smart-contract entry points (Vault and Router)
+  are the primary write surface; SDKs wrap the SOR (Smart Order Router) for client-side route construction.
 apis:
 - aid: balancer:graphql-api
   name: Balancer GraphQL API
@@ -67,8 +65,7 @@ apis:
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api-v3.balancer.fi/
   humanURL: https://docs.balancer.fi/data-and-analytics/data-and-analytics/api.html
-  description: >-
-    Public GraphQL API used by the Balancer UI and integrators. Provides pools, tokens, swaps,
+  description: Public GraphQL API used by the Balancer UI and integrators. Provides pools, tokens, swaps,
     gauges, voting, and analytics across all supported chains.
   properties:
   - type: Documentation
@@ -115,7 +112,8 @@ apis:
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://github.com/balancer/b-sdk
   humanURL: https://docs.balancer.fi/integration-guides/swapping/swaps-with-sor-sdk.html
-  description: Client-side TypeScript / Solidity SDK for the Balancer Smart Order Router; constructs swap routes against current pool state.
+  description: Client-side TypeScript / Solidity SDK for the Balancer Smart Order Router; constructs swap
+    routes against current pool state.
   properties:
   - type: Documentation
     url: https://docs.balancer.fi/integration-guides/swapping/swaps-with-sor-sdk.html
@@ -143,7 +141,8 @@ apis:
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://etherscan.io/address/balancer.fi
   humanURL: https://docs.balancer.fi/concepts/vault/
-  description: Vault and Router smart contracts where swaps and liquidity actions are executed on-chain. v2 and v3 versions deployed across Ethereum, Arbitrum, Optimism, Polygon, Avalanche, Gnosis, etc.
+  description: Vault and Router smart contracts where swaps and liquidity actions are executed on-chain.
+    v2 and v3 versions deployed across Ethereum, Arbitrum, Optimism, Polygon, Avalanche, Gnosis, etc.
   properties:
   - type: Documentation
     url: https://docs.balancer.fi/concepts/vault/
@@ -157,6 +156,8 @@ apis:
   - Direct pool execution
   - Liquidity provisioning
 common:
+- type: Website
+  url: https://balancer.fi
 - type: DomainSecurity
   url: security/balancer-domain-security.yml
 - type: LinkedIn
