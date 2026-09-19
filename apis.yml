@@ -59,6 +59,12 @@ apis:
   tags:
   - GraphQL
   - Pools
+  - Swap
+  - Liquidity
+  - Analytics
+  tags_raw:
+  - GraphQL
+  - Pools
   - Swaps
   - Liquidity
   - Analytics
