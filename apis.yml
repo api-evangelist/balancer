@@ -4,14 +4,20 @@ name: Balancer
 kind: protocol
 deliveryModel:
   model: saas
-  open_source: false
+  license_evidence:
+    not_product:
+    - balancer/api
+    - balancer/b-sdk
+    - balancer/balancer-v2-monorepo
+  open_source: unknown
   commercial: true
   callable_host: false
   label: Hosted service · you call their endpoint
-  confidence: medium
+  confidence: low
   source:
   - pricing
-  generated: '2026-08-28'
+  - repository-not-product
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: freemium
@@ -35,7 +41,7 @@ tags:
 - Multi-Chain
 - GraphQL
 - Smart Order Router
-- Open-Source
+- Open Source
 tags_raw:
 - Web3
 - DeFi
@@ -46,6 +52,7 @@ tags_raw:
 - GraphQL
 - Smart Order Router
 - Open Source
+- Open-Source
 created: '2026-05-08'
 modified: '2026-09-16'
 specificationVersion: '0.23'
