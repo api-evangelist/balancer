@@ -9,7 +9,7 @@
   partner_name: CoinGecko
   type: coverage
   channel: partner-built
-  evidence: https://api.coingecko.com/api/v3/exchanges/balancer
+  evidence: https://api.coingecko.com/api/v3/exchanges/balancer-v3-arbitrum
   source: edge
   relationship: connector-coverage
   status: not-a-workflow
