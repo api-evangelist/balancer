@@ -1,4 +1,4 @@
-# Balancer (balancer)
+# Balancer
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,39 +64,112 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Balancer is a DeFi AMM and programmable liquidity platform supporting weighted, stable, and custom pools (v2 and v3). Balancer publishes a public GraphQL API at `api-v3.balancer.fi` plus per-chain subgraphs. Smart-contract entry points (Vault and Router) are the primary write surface.
+Balancer is a DeFi AMM and programmable liquidity platform supporting weighted, stable, and custom pools (v2 and v3). Balancer publishes a public GraphQL API at api-v3.balancer.fi for pool, swap, and analytics data, plus per-chain subgraph endpoints. Smart-contract entry points (Vault and Router) are the primary write surface; SDKs wrap the SOR (Smart Order Router) for client-side route construction.
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/balancer/refs/heads/main/apis.yml)
+**Areas:** Web3 · DeFi · Decentralized Exchange · AMM · Liquidity · Multi-Chain · GraphQL · Smart Order Router · Open Source
 
-## Type
-- **x-type:** protocol
+## Balancer on APIs.io
 
-## Tags
-- Web3, DeFi, DEX, AMM, Liquidity, Multi-chain, GraphQL, Smart Order Router, Open Source
+Everything profiled for Balancer is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/balancer/](https://apis.io/providers/balancer/)** — or go straight to one of the APIs or properties below.
 
-## APIs
-- **Balancer GraphQL API** (`https://api-v3.balancer.fi/`) - public, GraphQL
-- **Balancer Subgraph** (`https://api.thegraph.com/subgraphs/name/balancer-labs`) - per-chain
-- **Balancer SOR SDK** (`https://github.com/balancer/b-sdk`) - client-side router
-- **Balancer Smart Contracts** - Vault and Router on multiple chains
+### APIs (4)
 
-## Notes on OpenAPI
-Balancer publishes a GraphQL schema rather than OpenAPI; introspection from the GraphQL endpoint is the canonical reference.
+- [Balancer GraphQL API](https://apis.io/apis/balancer/graphql-api/) — Public GraphQL API used by the Balancer UI and integrators. Provides pools, tokens, swaps, gauges, voting, and analytics across all supported chains.
+- [Balancer Subgraph](https://apis.io/apis/balancer/subgraph/) — Per-chain GraphQL subgraphs published on The Graph for raw indexed Balancer events.
+- [Balancer SOR SDK](https://apis.io/apis/balancer/sor-sdk/) — Client-side TypeScript / Solidity SDK for the Balancer Smart Order Router; constructs swap routes against current pool state.
+- [Balancer Smart Contracts](https://apis.io/apis/balancer/smart-contracts/) — Vault and Router smart contracts where swaps and liquidity actions are executed on-chain. v2 and v3 versions deployed across Ethereum, Arbitrum, Optimism,…
 
-## Timestamps
-- **Created:** 2026-05-08
-- **Modified:** 2026-05-08
+### Published properties
 
-## Common Properties
-- [Portal](https://balancer.fi/)
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### GraphQL (1)
+
+GraphQL schemas.
+
+- [Balancer GraphQL API](https://apis.io/graphqls/balancer/balancer-graphql/)
+
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Balancer Domain Security](https://apis.io/security/balancer/balancer-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Balancer Plans Pricing](https://apis.io/plans/balancer/balancer-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Balancer Rate Limits](https://apis.io/rate-limits/balancer/balancer-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Balancer Finops](https://apis.io/finops/balancer/balancer-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://balancer.fi)
 - [Documentation](https://docs.balancer.fi/)
-- [GitHub](https://github.com/balancer)
-- [Forum](https://forum.balancer.fi/)
-- [Plans](plans/balancer-plans-pricing.yml) - reconciled (open API + on-chain fee)
-- [RateLimits](rate-limits/balancer-rate-limits.yml) - partially reconciled (fair-use)
-- [FinOps](finops/balancer-finops.yml) - reconciled FOCUS-aligned
+- [Blog](https://medium.com/feed/balancer-protocol)
 
-## Maintainers
-**FN:** Kin Lane
+## API Evangelist rating
 
-**Email:** kin@apievangelist.com
+**Kin Score 14.1** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 78.6 |
+| Contract quality | 0.0 |
+| Contract governance | 0.0 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 26.2 |
+| Access clarity | 5.3 |
+
+**Agent readiness 0.6** — human-only
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 11.1** — Securities & Market Data
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/balancer/](https://apis.io/providers/balancer/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Balancer: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/balancer/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
